@@ -51,9 +51,9 @@ require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
-  
+
   use {
-	"windwp/nvim-autopairs",
+    "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
   }
 
@@ -63,8 +63,8 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
-  use {'nvim-tree/nvim-web-devicons',
-    config = function() require("nvim-web-devicons").setup{} end
+  use { 'nvim-tree/nvim-web-devicons',
+    config = function() require("nvim-web-devicons").setup {} end
   }
 
   -- Add custom plugins to packer from /nvim/lua/custom/plugins.lua
@@ -146,15 +146,15 @@ vim.g.maplocalleader = ' '
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- THE mapping
-vim.keymap.set("i", "kj","<Esc>")
+vim.keymap.set("i", "kj", "<Esc>")
 
--- Manage tabs 
-vim.keymap.set("n", "<C-J>","<C-W><C-J>")
-vim.keymap.set("n", "<C-K>","<C-W><C-K>")
-vim.keymap.set("n", "<C-L>","<C-W><C-L>")
-vim.keymap.set("n", "<C-H>","<C-W><C-H>")
+-- Manage tabs
+vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
+vim.keymap.set("n", "<C-K>", "<C-W><C-K>")
+vim.keymap.set("n", "<C-L>", "<C-W><C-L>")
+vim.keymap.set("n", "<C-H>", "<C-W><C-H>")
 
-vim.keymap.set("n", "<leader>b","<C-^>")
+vim.keymap.set("n", "<leader>b", "<C-^>")
 
 
 -- Remap for dealing with word wrap
@@ -358,6 +358,7 @@ local on_attach = function(_, bufnr)
     end
   end, { desc = 'Format current buffer with LSP' })
 end
+vim.keymap.set('n', '<leader>f', '<cmd>Format<CR>')
 
 -- Setup mason so it can manage external tooling
 require('mason').setup()
