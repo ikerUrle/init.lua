@@ -48,6 +48,7 @@ require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
   }
+
   use { -- HTML autotags
     'windwp/nvim-ts-autotag',
   }
@@ -55,14 +56,41 @@ require('packer').startup(function(use)
   -- Git related plugins
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
-  use 'lewis6991/gitsigns.nvim'
+  use { 'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup {
+        signs = {
+          add = { text = '+' },
+          change = { text = '~' },
+          delete = { text = '_' },
+          topdelete = { text = '‾' },
+          changedelete = { text = '~' },
+        },
+      }
+    end
+  }
 
   -- use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use { "catppuccin/nvim", as = "catppuccin" }
   use { "folke/tokyonight.nvim" }
 
-  use 'nvim-lualine/lualine.nvim'           -- Fancier statusline
-  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
+  use { 'nvim-lualine/lualine.nvim',
+    config = function()
+      require('lualine').setup {
+        options = {
+          icons_enabled = false,
+          theme = 'auto',
+          component_separators = '|',
+          section_separators = '',
+        },
+      }
+    end
+  } -- Fancier statusline
+  -- Set lualine as statusline
+  -- See `:help lualine.txt`
+  use { 'lukas-reineke/indent-blankline.nvim', -- Add indentation guides even on blank lines
+    config = function() require('ibl').setup {} end
+  }
   use { 'numToStr/Comment.nvim',
     config = function() require("Comment").setup {} end
   }                      -- "gc" to comment visual regions/lines
@@ -87,7 +115,22 @@ require('packer').startup(function(use)
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons', -- optional
-    }
+    },
+    config = function()
+      require("nvim-tree").setup {
+        view = {
+          width = {} -- dynamic width
+        },
+        actions = {
+          open_file = {
+            quit_on_open = true,
+          },
+        },
+        filters = {
+          dotfiles = false
+        }
+      }
+    end
   }
 
   -- List lsp errors
@@ -95,34 +138,16 @@ require('packer').startup(function(use)
     "folke/trouble.nvim",
     requires = "nvim-tree/nvim-web-devicons",
     config = function()
-      require("trouble").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
+      require("trouble").setup {}
     end
   }
 
   use {
-    's1n7ax/nvim-search-and-replace',
-    config = function()
-      require 'nvim-search-and-replace'.setup {}
+    'nvim-pack/nvim-spectre',
+    config = function() 
+      require("spectre").setup {}
     end
   }
-  -- use {
-  --   "neomake/neomake",
-  --   config = function()
-  --     require("neomake").setup {
-  --       -- your configuration comes here
-  --       -- or leave it empty to use the default settings
-  --       -- refer to the configuration section below
-  --     }
-  --   end
-  -- }
-
-  -- Add custom plugins to packer from /nvim/lua/custom/plugins.lua
-  local has_plugins, plugins = pcall(require, "custom.plugins")
-  if has_plugins then plugins(use) end
 
   if is_bootstrap then
     require('packer').sync()
