@@ -15,6 +15,7 @@ vim.keymap.set("n", "<C-H>", "<C-W><C-H>")
 vim.keymap.set("n", "<leader>b", "<C-^>")
 
 
+
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -31,12 +32,6 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer]' })
 
-vim.keymap.set('n', '<leader>p', require('telescope.builtin').find_files, { desc = 'Find files' })
-vim.keymap.set('n', '<leader>h', require('telescope.builtin').help_tags, { desc = 'Search [H]elp' })
-vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[F]ind current [W]ord' })
-vim.keymap.set('n', '<leader>ff', require('telescope.builtin').live_grep, { desc = '[F]uzzy [F]ind' })
-vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
-vim.keymap.set('n', '<leader>l', require('telescope.builtin').resume, { desc = 'Repeat [L]ast action' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>k', vim.diagnostic.goto_prev)

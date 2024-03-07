@@ -1,4 +1,4 @@
-require("ikerurle.packer")
+require("ikerurle.lazy")
 require("ikerurle.set")
 require("ikerurle.mappings")
 require("ikerurle.neomake")
