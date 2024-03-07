@@ -9,13 +9,15 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-        'nvim-lua/plenary.nvim',
+  'nvim-lua/plenary.nvim',
 
-   -- LSP Configuration & Plugins
-    {'neovim/nvim-lspconfig',
+  -- LSP Configuration & Plugins
+  {
+    'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
@@ -39,13 +41,13 @@ require('lazy').setup({
   },
 
 
-{
+  {
     "nvimdev/guard.nvim",
     -- Builtin configuration, optional
     dependencies = {
-        "nvimdev/guard-collection",
+      "nvimdev/guard-collection",
     },
-},
+  },
   { -- Additional text objects via treesitter
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
@@ -57,7 +59,8 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-  { 'lewis6991/gitsigns.nvim',
+  {
+    'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup {
         signs = {
@@ -71,9 +74,10 @@ require('lazy').setup({
     end
   },
 
-  { "catppuccin/nvim", name = "catppuccin" },
+  { "catppuccin/nvim",                          name = "catppuccin" },
 
-  { 'nvim-lualine/lualine.nvim', -- Fancier statusline
+  {
+    'nvim-lualine/lualine.nvim', -- Fancier statusline
     config = function()
       require('lualine').setup {
         options = {
@@ -85,12 +89,14 @@ require('lazy').setup({
       }
     end
   },
-  { 'lukas-reineke/indent-blankline.nvim', -- Add indentation guides even on blank lines
+  {
+    'lukas-reineke/indent-blankline.nvim', -- Add indentation guides even on blank lines
     config = function() require('ibl').setup {} end
   },
-  { 'numToStr/Comment.nvim',
+  {
+    'numToStr/Comment.nvim',
     config = function() require("Comment").setup {} end
-  },                      -- "gc" to comment visual regions/lines
+  },                  -- "gc" to comment visual regions/lines
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   {
     "windwp/nvim-autopairs",
@@ -102,8 +108,9 @@ require('lazy').setup({
   },
 
   -- Fuzzy Finder Algorithm which dependencies local dependencies to be built. Only load if `make` is available
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', cond = vim.fn.executable 'make' == 1 },
-  { 'nvim-tree/nvim-web-devicons',
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make',     cond = vim.fn.executable 'make' == 1 },
+  {
+    'nvim-tree/nvim-web-devicons',
     config = function() require("nvim-web-devicons").setup {} end
   },
 
@@ -129,7 +136,7 @@ require('lazy').setup({
     end
   },
 
-  
+
   {
     "folke/trouble.nvim", -- List lsp errors
     dependencies = "nvim-tree/nvim-web-devicons",
@@ -140,9 +147,11 @@ require('lazy').setup({
 
   {
     'nvim-pack/nvim-spectre', -- Search & replace
-    config = function() 
+    config = function()
       require("spectre").setup {}
     end
   },
+
+  'theprimeagen/harpoon'
 
 })
