@@ -15,16 +15,16 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   'nvim-lua/plenary.nvim',
 
-  -- LSP Configuration & Plugins
-  {
-    'neovim/nvim-lspconfig',
+  { 'VonHeikemen/lsp-zero.nvim',
+    branch = 'v3.x',
     dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-
-      -- Useful status updates for LSP
-      'j-hui/fidget.nvim',
+     'williamboman/mason.nvim' ,
+     'williamboman/mason-lspconfig.nvim' ,
+     'neovim/nvim-lspconfig' ,
+     'hrsh7th/cmp-nvim-lsp' ,
+     'hrsh7th/nvim-cmp' ,
+     'L3MON4D3/LuaSnip' ,
+     'j-hui/fidget.nvim' ,
     },
   },
 

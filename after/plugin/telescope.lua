@@ -6,3 +6,22 @@ vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current 
 vim.keymap.set('n', '<leader>ff', builtin.live_grep, { desc = '[F]uzzy [F]ind' })
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
 vim.keymap.set('n', '<leader>l', builtin.resume, { desc = 'Repeat [L]ast action' })
+
+-- [[ Configure Telescope ]]
+-- See `:help telescope` and `:help telescope.setup()`
+local telescope_actions = require('telescope.actions')
+require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        ['<C-u>'] = false,
+        ['<C-d>'] = false,
+        ['<C-j>'] = telescope_actions.move_selection_next,
+        ['<C-k>'] = telescope_actions.move_selection_previous,
+      },
+    },
+  },
+}
+
+-- Enable telescope fzf native, if installed
+pcall(require('telescope').load_extension, 'fzf')

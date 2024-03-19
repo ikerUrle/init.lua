@@ -1,9 +1,8 @@
 -- See `:help vim.o`
-
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 -- Make line numbers default
-vim.wo.number = true
+vim.o.number = true
 vim.opt.relativenumber = true
 
 -- Set highlight on search
@@ -39,4 +38,3 @@ vim.cmd("colorscheme " .. vim.g.colorscheme)
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
-

@@ -30,7 +30,6 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer]' })
 
-
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>k', vim.diagnostic.goto_prev)
 vim.keymap.set('n', '<leader>j', vim.diagnostic.goto_next)
@@ -56,6 +55,7 @@ vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
 vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
   { silent = true, noremap = true }
 )
+
 -- NvimTree
 vim.keymap.set('n', '<leader>tt', '<cmd>NvimTreeToggle<cr>')
 vim.keymap.set('n', '<leader>te', '<cmd>NvimTreeFindFile<cr>')
@@ -69,9 +69,17 @@ vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
 vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
   desc = "Search current word"
 })
-vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
-  desc = "Search current word"
-})
 vim.keymap.set('n', '<leader>sf', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
   desc = "Search on current file"
+})
+
+-- -- Highlight on yank
+-- -- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
 })
