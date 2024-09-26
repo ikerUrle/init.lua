@@ -15,16 +15,26 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   'nvim-lua/plenary.nvim',
 
-  { 'VonHeikemen/lsp-zero.nvim',
+  {
+    'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
     dependencies = {
-     'williamboman/mason.nvim' ,
-     'williamboman/mason-lspconfig.nvim' ,
-     'neovim/nvim-lspconfig' ,
-     'hrsh7th/cmp-nvim-lsp' ,
-     'hrsh7th/nvim-cmp' ,
-     'L3MON4D3/LuaSnip' ,
-     'j-hui/fidget.nvim' ,
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'neovim/nvim-lspconfig',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/nvim-cmp',
+      'L3MON4D3/LuaSnip',
+      'j-hui/fidget.nvim',
+    },
+  },
+  {
+    "jay-babu/mason-null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "nvimtools/none-ls.nvim",
+      "nvimtools/none-ls-extras.nvim"
     },
   },
 
@@ -151,7 +161,9 @@ require('lazy').setup({
       require("spectre").setup {}
     end
   },
-
+  {
+    'mfussenegger/nvim-dap'
+  },
   'theprimeagen/harpoon'
 
 })
