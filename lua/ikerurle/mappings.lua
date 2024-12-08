@@ -26,17 +26,6 @@ vim.keymap.set("n", "<leader>b", "<C-^>")
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader>ob', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-    disable_devicons = true,
-  })
-end, { desc = '[/] Fuzzily search in current buffer]' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>k', vim.diagnostic.goto_prev)
@@ -71,15 +60,6 @@ vim.keymap.set('n', '<leader>te', '<cmd>NvimTreeFindFile<cr>')
 vim.keymap.set('n', '<leader>fr',
   "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<cr>")
 
-vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
-  desc = "Toggle Spectre"
-})
-vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-  desc = "Search current word"
-})
-vim.keymap.set('n', '<leader>sf', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
-  desc = "Search on current file"
-})
 
 -- -- Highlight on yank
 -- -- See `:help vim.highlight.on_yank()`

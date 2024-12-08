@@ -2,8 +2,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-require("ikerurle.lazy")
 require("ikerurle.set")
 require("ikerurle.mappings")
 require("ikerurle.neomake")
-require("ikerurle.color")
+require("ikerurle.lazy_init")

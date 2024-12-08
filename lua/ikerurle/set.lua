@@ -32,9 +32,6 @@ vim.o.scrolloff = 10
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.g.colorscheme = "catppuccin"
-
-vim.cmd("colorscheme " .. vim.g.colorscheme)
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
