@@ -6,11 +6,17 @@ vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current 
 vim.keymap.set('n', '<leader>ff', builtin.live_grep, { desc = '[F]uzzy [F]ind' })
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
 vim.keymap.set('n', '<leader>l', builtin.resume, { desc = 'Repeat [L]ast action' })
+-- vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = '[F]ind [S]ymbols' })
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 local telescope_actions = require('telescope.actions')
 require('telescope').setup {
+  pickers = {
+    lsp_document_symbols = {
+      symbols = { 'Function', 'Method', 'Field', 'Constructor' },
+    },
+  },
   defaults = {
     mappings = {
       i = {

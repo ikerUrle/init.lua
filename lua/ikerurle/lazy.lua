@@ -13,6 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+
   'nvim-lua/plenary.nvim',
 
   {
@@ -48,8 +49,10 @@ require('lazy').setup({
     build = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-context",
+    }
   },
-
 
   {
     "nvimdev/guard.nvim",
@@ -164,6 +167,15 @@ require('lazy').setup({
   {
     'mfussenegger/nvim-dap'
   },
-  'theprimeagen/harpoon'
-
+  'theprimeagen/harpoon',
+  'github/copilot.vim',
+  {
+  'stevearc/aerial.nvim',
+  opts = {},
+  -- Optional dependencies
+  dependencies = {
+     "nvim-treesitter/nvim-treesitter",
+     "nvim-tree/nvim-web-devicons"
+  },
+}
 })

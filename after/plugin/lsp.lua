@@ -1,6 +1,6 @@
 local lsp_zero = require('lsp-zero')
 
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'lua_ls', 'volar', 'gopls' }
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'ts_ls', 'lua_ls', 'volar', 'gopls' }
 
 local on_attach = function(_, bufnr)
   lsp_zero.default_keymaps({ buffer = bufnr })
@@ -10,7 +10,7 @@ lsp_zero.on_attach(on_attach)
 
 local ft = require('guard.filetype')
 
-ft('typescript,javascript,typescriptreact,html,yaml,vue'):fmt('prettier')
+ft('typescript,javascript,typescriptreact,html,yaml,vue,java'):fmt('prettier')
 
 require("guard").setup {
   fmt_on_save = false,
@@ -81,3 +81,4 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+      
