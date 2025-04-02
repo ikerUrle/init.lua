@@ -53,13 +53,9 @@ vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
   { silent = true, noremap = true }
 )
 
--- NvimTree
-vim.keymap.set('n', '<leader>tt', '<cmd>NvimTreeToggle<cr>')
-vim.keymap.set('n', '<leader>te', '<cmd>NvimTreeFindFile<cr>')
 
 vim.keymap.set('n', '<leader>fr',
   "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<cr>")
-
 
 -- -- Highlight on yank
 -- -- See `:help vim.highlight.on_yank()`

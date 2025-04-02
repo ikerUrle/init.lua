@@ -18,6 +18,8 @@ return {
           dotfiles = false
         }
       }
+      vim.keymap.set('n', '<leader>tt', '<cmd>NvimTreeToggle<cr>')
+      vim.keymap.set('n', '<leader>te', '<cmd>NvimTreeFindFile<cr>')
     end
   },
 }

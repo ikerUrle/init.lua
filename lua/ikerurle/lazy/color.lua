@@ -9,6 +9,12 @@ end
 
 return {
   {
+    "navarasu/onedark.nvim",
+    config = function()
+      -- SetColorscheme("onedark")
+    end
+  },
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     config = function()

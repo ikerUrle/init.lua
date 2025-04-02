@@ -24,11 +24,12 @@ return {
 
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' ,
+    },
     config = function()
       local lsp_zero = require('lsp-zero')
 
-      local servers = { 'clangd', 'rust_analyzer', 'pyright', 'ts_ls', 'lua_ls', 'volar', 'gopls' }
+      local servers = { 'clangd', 'rust_analyzer', 'pyright', 'lua_ls', 'gopls','ts_ls' }
 
       local on_attach = function(_, bufnr)
         lsp_zero.default_keymaps({ buffer = bufnr })
@@ -40,12 +41,12 @@ return {
 
       ft('typescript,javascript,typescriptreact,html,yaml,vue,java'):fmt('prettier')
 
-      require("guard").setup {
-        fmt_on_save = false,
-        lsp_as_default_formatter = true,
-      }
+      -- require("guard").setup {
+      --   fmt_on_save = false,
+      --   lsp_as_default_formatter = true,
+      -- }
 
-      vim.keymap.set('n', '<leader>fa', '<cmd>GuardFmt<CR>')
+      vim.keymap.set('n', '<leader>fa', '<cmd>Guard fmt<CR>')
       vim.keymap.set('n', '<leader>.', vim.lsp.buf.code_action)
       vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename)
 
@@ -63,28 +64,42 @@ return {
       }
 
       require("mason-null-ls").setup({
-        ensure_installed = { "eslint", "jq" }
+        -- ensure_installed = { "eslint", "jq" }
+        ensure_installed = { "jq" }
       })
 
-      local null_ls = require("null-ls")
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.formatting.stylua,
-          -- null_ls.builtins.completion.spell,
-          require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
-        },
-      })
+      -- require("typescript-tools").setup({
+      --   capabilities = lsp_zero.get_capabilities(),
+      --   settings = { 
+      --     separate_diagnostic_server = false
+      --   }
+      -- })
+
+      -- local null_ls = require("null-ls")
+      -- null_ls.setup({
+      --   sources = {
+      --     null_ls.builtins.formatting.stylua,
+      --     -- null_ls.builtins.completion.spell,
+      --     require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
+      --   },
+      -- })
 
       -- Turn on status information
       require('fidget').setup()
 
-      require('lspconfig').volar.setup {
-        settings = {
-          languageFeatures = {
-            inlayHints = true
-          }
-        }
-      }
+      -- require('lspconfig').volar.setup {
+      --   settings = {
+      --     languageFeatures = {
+      --       inlayHints = true
+      --     }
+      --   }
+      -- }
+
+      -- require('lspconfig').ts_ls.setup {
+      --   root_dir = function(...)
+      --     return require("lspconfig.util").root_pattern(".git")(...)
+      --   end,
+      -- }
 
       -- nvim-cmp setup
       local cmp = require 'cmp'
@@ -112,4 +127,8 @@ return {
     end
 
   },
+  -- {
+  --   "pmizio/typescript-tools.nvim",
+  --   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  -- },
 }
