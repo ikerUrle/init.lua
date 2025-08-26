@@ -8,17 +8,26 @@ function SetColorscheme(color)
 end
 
 return {
+  -- {
+  --   "olimorris/onedarkpro.nvim",
+  --   config = function()
+  --     SetColorscheme("onedark")
+  --   end
+  -- },
   {
-    "navarasu/onedark.nvim",
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
     config = function()
-      -- SetColorscheme("onedark")
+      SetColorscheme("tokyonight")
     end
   },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    config = function()
-      SetColorscheme("catppuccin")
-    end
-  },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   config = function()
+  --     SetColorscheme("catppuccin-mocha")
+  --   end
+  -- },
 }
