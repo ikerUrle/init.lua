@@ -37,16 +37,7 @@ return {
 
       lsp_zero.on_attach(on_attach)
 
-      local ft = require('guard.filetype')
-
-      ft('typescript,javascript,typescriptreact,html,yaml,vue,java'):fmt('prettier')
-
-      -- require("guard").setup {
-      --   fmt_on_save = false,
-      --   lsp_as_default_formatter = true,
-      -- }
-
-      vim.keymap.set('n', '<leader>fa', '<cmd>Guard fmt<CR>')
+      vim.keymap.set('n', '<leader>fa', vim.lsp.buf.format)
       vim.keymap.set('n', '<leader>.', vim.lsp.buf.code_action)
       vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename)
 
